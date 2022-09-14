@@ -143,6 +143,7 @@ nnoremap <silent> <Plug>MarkSearchCascadeStartNoStop    :<C-u>if ! mark#cascade#
 nnoremap <silent> <Plug>MarkSearchCascadeNextNoStop     :<C-u>if ! mark#cascade#Next(v:count1, 0, 0)<Bar>execute "normal! \<lt>C-\>\<lt>C-n>\<lt>Esc>"<Bar>echoerr mark#errGet()<Bar>endif<CR>
 nnoremap <silent> <Plug>MarkSearchCascadePrevNoStop     :<C-u>if ! mark#cascade#Next(v:count1, 0, 1)<Bar>execute "normal! \<lt>C-\>\<lt>C-n>\<lt>Esc>"<Bar>echoerr mark#errGet()<Bar>endif<CR>
 
+if exists(g:mark_maps) && g:mark_maps == 1
 
 if !hasmapto('<Plug>MarkSet', 'n')
 	nmap <unique> <Leader>m <Plug>MarkSet
@@ -190,6 +191,8 @@ endif
 " No default mapping for <Plug>MarkSearchGroupPrev
 " No default mapping for <Plug>MarkSearchUsedGroupNext
 " No default mapping for <Plug>MarkSearchUsedGroupPrev
+
+endif " exists(g:mark_maps) && g:mark_maps == 1
 
 function! s:MakeDirectGroupMappings()
 	for l:cnt in range(1, g:mwDirectGroupJumpMappingNum)
